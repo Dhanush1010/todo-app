@@ -10,8 +10,12 @@ const User = db.sequelize.define('User', {
   },
   username: {
     type: DataTypes.STRING,
-    allowNull: false       // Make username required
-  }
+    allowNull: false,     // Make username required
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,     // Make password required
+  },
 }, {
   tableName: 'users',      // This will define the table name in the DB as 'users'
 });

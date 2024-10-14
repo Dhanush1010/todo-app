@@ -5,6 +5,8 @@ const db = require('./config/db'); // Import the database connection module
 const User = require('./models/User'); // Import User model
 const Task = require('./models/Task'); // Import Task model
 const testRoute = require('./routes/test.routes'); // Import the hello route
+const taskRoute = require('./routes/task.routes'); // Import the hello route
+const userRoute = require('./routes/user.routes'); // Import the hello route
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -20,7 +22,11 @@ db.sequelize.sync()
         console.error('Error syncing database:', err);
     });
 
-app.use('/api', testRoute)
+app.use('/api/test', testRoute)
+
+app.use('/api/task', taskRoute)
+
+app.use('/api/user', userRoute)
 
 // Start the server
 app.listen(PORT, () => {
