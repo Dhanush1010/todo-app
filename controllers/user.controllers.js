@@ -34,3 +34,36 @@ exports.createUser = async (req, res) => {
     res.status(500).send('Internal server error');
   }
 };
+
+// Login function
+exports.loginUser = async (req, res) => {
+  const { username, password } = req.body; // Destructure the request body
+
+  try {
+    // Find the user by username
+    const user = await User.findOne({ where: { username } });
+
+    // Check if user exists
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Compare the provided password with the hashed password
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    
+    if (!passwordMatch) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Successful login
+    res.status(200).json({
+      message: 'Login successful',
+      userid: user.userid,
+      username: user.username,
+      role: user.role, // Optional: return role if you want
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
