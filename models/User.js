@@ -16,6 +16,11 @@ const User = db.sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,     // Make password required
   },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: false,     // Make role required
+    defaultValue: 'user', // Set default value to 'user'
+  },
 }, {
   tableName: 'users',      // This will define the table name in the DB as 'users'
 });

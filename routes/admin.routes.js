@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router(); // Create a new router
-const userController = require('../controllers/user.controllers'); // Import the controller
+const adminController = require('../controllers/admin.controllers'); // Import the controller
 
 
 

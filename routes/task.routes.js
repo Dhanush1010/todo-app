@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router(); // Create a new router
-const testController = require('../controllers/task.controllers'); // Import the controller
+const taskController = require('../controllers/task.controllers'); // Import the controller
 
 
 
